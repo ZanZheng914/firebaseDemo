@@ -7,6 +7,7 @@ admin.initializeApp({
 });
 // var defaultProjectManagement = admin.projectManagement();
 // console.log(defaultProjectManagement);
+/*
 let db = admin.firestore();
 db.collection('users').get()
     .then((snapshot)=>{
@@ -17,7 +18,7 @@ db.collection('users').get()
     .catch((err)=>{
         console.log('Erroe getting docs',err);
     })
-
+*/
 //const admin = require('firebase-admin');
 //var serviceAccount=require("./fir-demo-d0da7-firebase-adminsdk-z27ul-9c54e12498.json");
 // admin.initializeApp({
@@ -89,3 +90,27 @@ async function uploadFile(filename){
 }
 uploadFile('./img/train.jpg').catch(console.error);
 */
+/*
+async function downloadFile(srcFilename, destFilename){
+    const options ={
+        destination: destFilename,
+    };
+    await bucket.file(srcFilename).download(options);
+}
+downloadFile('train.jpg','meme.jpg').catch(console.error);
+*/
+/*
+async function listFiles(){
+    const [files] = await bucket.getFiles();
+    console.log('Files:');
+    files.forEach(file =>{
+        console.log(file.name);
+    });
+}
+listFiles().catch(console.error);
+*/
+
+async function deleteFile(filename){
+    await bucket.file(filename).delete();
+}
+deleteFile('train.jpg').catch(console.error);
